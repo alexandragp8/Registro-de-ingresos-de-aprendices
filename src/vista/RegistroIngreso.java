@@ -31,6 +31,10 @@ public class RegistroIngreso extends javax.swing.JFrame {
         controladorRegistroIngreso = new ControladorRegistroIngreso();
         addRowToJTable();   // El constructor llama al metodo  
     }
+
+    RegistroIngreso(String string) {
+
+    }
     
     public void addRowToJTable()
     {
@@ -86,7 +90,7 @@ public class RegistroIngreso extends javax.swing.JFrame {
         cbCurso = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaRegistros = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
@@ -166,11 +170,11 @@ public class RegistroIngreso extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Eliminar");
-        jButton3.setName("btn_eliminar"); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setName("btn_eliminar"); // NOI18N
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -277,7 +281,7 @@ public class RegistroIngreso extends javax.swing.JFrame {
                                             .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(12, 12, 12)
-                                                .addComponent(jButton3)))
+                                                .addComponent(btnEliminar)))
                                         .addGap(43, 43, 43)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -349,7 +353,7 @@ public class RegistroIngreso extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardar)
                             .addComponent(btnConsultar)
-                            .addComponent(jButton3)
+                            .addComponent(btnEliminar)
                             .addComponent(btnEditar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -378,6 +382,15 @@ public class RegistroIngreso extends javax.swing.JFrame {
         //Guardar -- captura de datos
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
+        String fecha = txtFecha.getText();
+
+        
+        if(nombre.isEmpty() || apellido.isEmpty() || fecha.isEmpty()){  // validacion de campos vacios
+            JOptionPane.showMessageDialog(null, "Los campos de nombre, apellido y fecha deben estar llenos ");
+            return;
+        }
+        
+        
         String edad = txtEdad.getText();
         String horaEntrada = txtEntrada.getText();
         String horaLlegada = txtLlegada.getText();
@@ -386,13 +399,17 @@ public class RegistroIngreso extends javax.swing.JFrame {
         String nombreInstructor = cbInstructor.getSelectedItem().toString();
         String sexo = cbSexo.getSelectedItem().toString();
         String nombreCurso = cbCurso.getSelectedItem().toString();
-        String fecha = txtFecha.getText();
         
         System.out.println(nombre+":"+apellido+":"+edad+":"+horaEntrada+":"+horaLlegada+":"+horaSalida+":"+observaciones+":"+nombreInstructor+":"+sexo+":"+nombreCurso+":"+fecha);
         
         controladorRegistroIngreso.registrar(nombre,apellido,edad,horaEntrada,horaLlegada,horaSalida,observaciones,nombreInstructor,sexo,nombreCurso,fecha);
         
         addRowToJTable();
+        
+        limpiarCampos();
+           
+        
+        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -440,7 +457,7 @@ public class RegistroIngreso extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLlegadaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
               
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
@@ -452,12 +469,21 @@ public class RegistroIngreso extends javax.swing.JFrame {
         
         addRowToJTable();
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
+        String fecha = txtFecha.getText();
+
+        
+        if(nombre.isEmpty() || apellido.isEmpty() || fecha.isEmpty()){  // validacion de campos vacios
+            JOptionPane.showMessageDialog(null, "Los campos de nombre, apellido y fecha deben estar llenos ");
+            return;
+        }
+        
+        
         String edad = txtEdad.getText();
         String horaEntrada = txtEntrada.getText();
         String horaLlegada = txtLlegada.getText();
@@ -466,7 +492,6 @@ public class RegistroIngreso extends javax.swing.JFrame {
         String nombreInstructor = cbInstructor.getSelectedItem().toString();
         String sexo = cbSexo.getSelectedItem().toString();
         String nombreCurso = cbCurso.getSelectedItem().toString();
-        String fecha = txtFecha.getText();
         
         System.out.println(nombre+":"+apellido+":"+edad+":"+horaEntrada+":"+horaLlegada+":"+horaSalida+":"+observaciones+":"+nombreInstructor+":"+sexo+":"+nombreCurso+":"+fecha);
         
@@ -479,7 +504,7 @@ public class RegistroIngreso extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public RegistroIngreso(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -518,11 +543,11 @@ public class RegistroIngreso extends javax.swing.JFrame {
     public javax.swing.JTable Jusuario;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbCurso;
     private javax.swing.JComboBox<String> cbInstructor;
     private javax.swing.JComboBox<String> cbSexo;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -548,6 +573,30 @@ public class RegistroIngreso extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setRegistroIngreso(String trim) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+
+    }
+    
+    private void limpiarCampos(){
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEdad.setText("");
+        txtEntrada.setText("");
+        txtLlegada.setText("");
+        txtSalida.setText("");
+        txtObservaciones.setText("");
+        cbInstructor.setSelectedItem("");
+        cbCurso.setSelectedItem("");
+        cbSexo.setSelectedItem("");
+        txtFecha.setText("");
+                
+    }
+
+    void setEsconderBotones() {
+           btnGuardar.setVisible(false);
+           btnEliminar.setVisible(false);
+           btnEditar.setVisible(false);
+
+
     }
 }

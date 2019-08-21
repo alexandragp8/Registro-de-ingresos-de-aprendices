@@ -29,6 +29,7 @@ public class ControladorRegistroIngreso {
         RegistroIngreso registroIngreso = new RegistroIngreso(nombre,apellido,edad,horaEntrada,horaLlegada,horaSalida,observaciones,nombreInstructor,sexo,nombreCurso,fecha);
         registroIngresoCAD.guardar(registroIngreso);
 
+        
     }
     
     public List<RegistroIngreso> listar(){

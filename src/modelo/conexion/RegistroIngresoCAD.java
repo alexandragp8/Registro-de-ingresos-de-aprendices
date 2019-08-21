@@ -45,17 +45,20 @@ public class RegistroIngresoCAD {
 
             
             int respuesta = ps.executeUpdate();
-                        
+                       
             if(respuesta>0){
                 con.cerrarConexion();
                 return true;
-            }
-        } catch (SQLException ex) {
+            }          
+        } 
+            catch (SQLException ex) {
             Logger.getLogger(RegistroIngresoCAD.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         con.cerrarConexion();
         return false;
 
+   
     }
      
     public  boolean eliminar(RegistroIngreso registroIngreso) {
@@ -139,6 +142,7 @@ public class RegistroIngresoCAD {
                 String sexo = respuesta.getString("sexo");
                 String nombreCurso = respuesta.getString("nombreCurso");
                 String fecha = respuesta.getString("fecha");
+                
                 System.out.println(nombre+":"+apellido+":"+edad+":"+horaEntrada+":"+horaLlegada+":"+horaSalida+":"+observaciones+":"+nombreInstructor+":"+sexo+":"+nombreCurso+":"+fecha);
 
                 RegistroIngreso registroIngreso = new RegistroIngreso(nombre,apellido,edad,horaEntrada,horaLlegada,horaSalida,observaciones,nombreInstructor,sexo,nombreCurso,fecha);
