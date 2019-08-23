@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/alexandragonzalez/Documents/SENA/TRIMESTRE%203/parcial/src/vista/Login.java</file>
+            <file>file:/Users/alexandragonzalez/Documents/SENA/TRIMESTRE%203/parcial/src/modelo/conexion/UsuarioCAD.java</file>
+            <file>file:/Users/alexandragonzalez/Documents/SENA/TRIMESTRE%203/parcial/src/controlador/ControladorRegistroIngreso.java</file>
+            <file>file:/Users/alexandragonzalez/Documents/SENA/TRIMESTRE%203/parcial/src/vista/Principal.java</file>
+            <file>file:/Users/alexandragonzalez/Documents/SENA/TRIMESTRE%203/parcial/src/vista/RegistroIngreso.java</file>
+            <file>file:/Users/alexandragonzalez/Documents/SENA/TRIMESTRE%203/parcial/src/modelo/conexion/RegistroIngresoCAD.java</file>
+            <file>file:/Users/alexandragonzalez/Documents/SENA/TRIMESTRE%203/parcial/src/modelo/conexion/Conexion.java</file>
+        </group>
     </open-files>
 </project-private>
